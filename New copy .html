@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Motivation</title>
+    <style>
+        body { font-family: Times New Roman, serif; text-align: center; margin-top: 50px; }
+        .message { font-size: 24px; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Your Motivational Message</h1>
+    <div class="message" id="message"></div>
+
+    <script>
+        const messages = [
+            "You have the skills to turn every challenge into an opportunity—believe in yourself!",
+            "You have the power to turn dreams into addresses—keep reaching for the stars!",
+            "You’re on fire—turning opportunities into successes!",
+            "Your passion for real estate shines through in everything you do. Keep that passion alive and let it drive you to new heights.",
+            "You’re building futures with every closing—keep up the amazing work!",
+            "You’re like a landmark—built to last and always impressive!",
+            "Your next big win is just ahead, like the perfect home waiting for a buyer!",
+            "In real estate, 'close' is a win! Keep closing deals!",
+            "Your success is like a great property: it just keeps appreciating!",
+            "Forget superheroes. We have you—real estate rockstar!",
+            "You’ve got all the keys to success—keep unlocking those deals!",
+            "The market may be tough, but so are you. Stay strong, stay focused, and keep moving forward.",
+            "Who needs luck when you have skills like yours?",
+            "Keep aiming high; your potential is limitless in this market!",
+            "Real estate agents don’t get tired—they just get leads!",
+            "You’re not just closing deals—you’re opening doors!",
+            "Your hard work today builds tomorrow’s dream homes!",
+            "Every day is a fresh start—let’s make today your best day yet!",
+            "Keep calm and close the deal!",
+            "Every call you make gets us closer to closing the next big deal!",
+            "Every call you make is a step closer to success—keep dialing!",
+            "Today’s forecast: 100% chance of selling something amazing!",
+            "The secret to your success? Effort, coffee, repeat!",
+            "You make deals as smooth as that coffee you're holding!",
+            "Your to-do list: Sell house. Make client happy. Be awesome.",
+            "Your hard work builds futures—keep it up!",
+            "When the going gets tough, the tough get closing!",
+            "Unlock your potential and watch the success flow—let's make it happen!",
+            "Your passion for real estate is the key that opens every door—keep shining!",
+            "The only thing better than a good deal? YOU making it happen!",
+            "Your hard work is paying off... and so is your commission!",
+            "Collaborating with your team brings dreams to life, but your hard work finalizes the deal!",
+            "Keep shining—your energy sells homes!",
+            "You’re not just building a career—you’re building dreams!",
+            "The more you sell, the closer you are to your dreams!",
+            "You’ve got more potential than the unit you’re selling!",
+            "Working with you is like winning big!",
+            "Coffee in one hand, contracts in the other—you're unstoppable!",
+            "You're the GPS leading clients straight to their dream home!",
+            "You've mastered the art of negotiation—now go master the world!",
+            "Don’t wait for opportunity to knock—build the door!",
+            "You’re a real estate ninja—swift, smooth, and always successful!",
+            "Working hard or hardly working? Either way, you’re winning!",
+            "You’ve got the drive, now let’s go sell some more units!",
+            "Every unit you sell is a chapter in someone’s story—make it a bestseller!",
+            "Your perseverance is your secret weapon—keep fighting for those deals!",
+            "You have the power to turn dreams into reality—keep making it happen!",
+            "Your energy is contagious—keep spreading the success!",
+            "Every obstacle is just a stepping stone to your next success. Keep moving ahead!",
+            "Your passion for real estate is the foundation of your success. Keep that fire burning!",
+            "You're turning the units into closed deals like a pro!",
+            "Your hard work today lays the groundwork for a brighter tomorrow—keep building!",
+            "You make it look easy, but we know you’re working hard!",
+            "Great agents make great commissions, and you’re crushing it!",
+            "You’re as solid as the foundation of the homes you sell!",
+            "Turning ‘For Sale’ into ‘Sold’ is your superpower!",
+            "Your hard work and passion are the keys to unlocking endless possibilities. Keep shining bright!",
+            "Every challenge you face is a stepping stone to greater achievements. Keep going!",
+            "You're on fire—keep up the hot streak!",
+            "Success in real estate is a journey, not a destination. Keep moving forward!",
+            "Real estate isn’t just a job, it’s your calling, and you’re answering!",
+            "Your hard work and determination are the foundation of your success. Keep building and never give up.",
+            "Your talent + hard work = unstoppable force in real estate!",
+            "Remember, every ‘no’ brings you closer to a ‘yes.’ Stay persistent and never lose sight of your goals.",
+            "Your dedication and passion are the keys to unlocking your potential. Keep striving for excellence!",
+            "You're the ace in this real estate game!",
+            "Just remember: You’re a deal-making machine!",
+            "When others see challenges, you see opportunities—keep pushing forward!",
+            "Believe in yourself and your vision. Your confidence will inspire trust and lead to greater achievements.",
+            "Every property you sell is a step closer to your dreams. Keep pushing forward and watch your hard work pay off!",
+            "You've got this!",
+            "Keep pushing, greatness is near!",
+            "Every step forward counts!",
+            "Your hard work is shining through!",
+            "Small progress is still progress!",
+            "Believe in the power of your potential!",
+            "You make a difference every day!",
+            "Keep growing, you're unstoppable!",
+            "Success starts with you!",
+            "Rise above and exceed expectations!",
+            "Your effort today shapes tomorrow!",
+            "Stay focused, success is yours!",
+            "You bring value in everything you do!",
+            "Challenges are stepping stones!",
+            "Your energy fuels progress!",
+            "Keep chasing excellence!",
+            "Together, we win!",
+            "Stay driven, stay successful!",
+            "Your determination is your superpower!",
+            "Go the extra mile, it’s never crowded!",
+            "Your work makes the dream work!",
+            "Keep innovating, keep leading!",
+            "You've got the power to make it happen!",
+            "Success is built by your hands!",
+            "One team, one mission!",
+            "Your passion is contagious!",
+            "Be bold, make it count!",
+            "Keep thriving, you're amazing!",
+            "Today’s effort, tomorrow’s success!",
+            "You’re a key part of our success!"
+        ];
+
+        function getUniqueMessage() {
+            let userMessage = localStorage.getItem('userMessage');
+            if (!userMessage) {
+                const randomIndex = Math.floor(Math.random() * messages.length);
+                userMessage = messages[randomIndex];
+                localStorage.setItem('userMessage', userMessage);
+            }
+            return userMessage;
+        }
+
+        document.getElementById('message').innerText = getUniqueMessage();
+    </script>
+</body>
+</html>
